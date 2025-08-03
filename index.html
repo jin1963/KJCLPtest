@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>KJC LP Auto Staking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: gold;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+    .section {
+      border: 1px solid gold;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="js/wallet.js"></script>
+<script src="js/staking.js"></script>
+<script src="js/referral.js"></script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/app.js"></script>
+</head>
+<body>
+  <h1>💎 KJC LP Auto Staking</h1>
+
+  <button onclick="connectWallet()">🔗 เชื่อมต่อกระเป๋า</button>
+  <p id="walletAddress">❌ ยังไม่เชื่อมต่อกระเป๋า</p>
+
+  <div class="section">
+    <h2>📌 สมัคร Referrer</h2>
+    <label>ใส่ Address ผู้นำแนะนำ:</label><br>
+    <input type="text" id="refAddress" placeholder="Referrer Address">
+    <button onclick="registerReferrer()">✅ สมัคร</button>
+  </div>
+
+  <div class="section">
+    <h2>🚀 Stake LP Token</h2>
+    <label>จำนวน USDT ที่จะใช้ Stake:</label><br>
+    <input type="number" id="stakeAmount" placeholder="เช่น 50">
+    <button onclick="stakeLP(document.getElementById('stakeAmount').value)">🚀 Stake LP</button>
+  </div>
+
+  <div class="section">
+    <h2>📊 ข้อมูลของคุณ</h2>
+    <p>💎 LP ที่สเตคไว้: <span id="stakedLP">-</span></p>
+    <p>🎁 รางวัล KJC ที่ยังไม่ได้เคลม: <span id="pendingReward">-</span></p>
+    <button onclick="claimReward()">🎉 เคลมรางวัล</button>
+    <button onclick="withdrawLP()">🔓 ถอน LP</button>
+  </div>
+
+  <div class="section">
+    <h2>🏆 รายได้จาก Referral</h2>
+    <p>🔗 ลิงก์แนะนำของคุณ:</p>
+    <a id="refLink" href="#" target="_blank">ยังไม่มี</a>
+    <p>💰 ยอดรางวัลแนะนำ: <span id="refReward">-</span> KJC</p>
+    <button onclick="claimReferral()">💸 เคลมรางวัลแนะนำ</button>
+  </div>
+</body>
+</html>
